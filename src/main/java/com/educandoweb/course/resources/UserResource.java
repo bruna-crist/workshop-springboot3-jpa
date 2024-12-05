@@ -42,7 +42,7 @@ public class UserResource {
         return ResponseEntity.noContent().build();
     }
     @PutMapping(value = "/{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj) {
+    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj) throws ResourceNotFoundException {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }
