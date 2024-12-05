@@ -2,6 +2,7 @@ package com.educandoweb.course.resources;
 
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.services.UserService;
+import com.educandoweb.course.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class UserResource {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
+    public ResponseEntity<User> findById(@PathVariable Long id) throws ResourceNotFoundException {
         User obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
